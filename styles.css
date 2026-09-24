@@ -136,7 +136,7 @@ nav .wrap {
   color: var(--paper);
   border-color: var(--ink);
 }
-}
+
 @media (max-width: 700px) {
   .navgroup .pill:not(.keep) {
     display: none;
