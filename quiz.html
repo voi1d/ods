@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diagnóstico Real — Seu Impacto no Clima e no Oceano</title>
+    <meta
+      name="description"
+      content="Calculadora científica de pegada de carbono e impacto oceânico, baseada em IPCC, FAO, Poore &amp; Nemecek (Science, 2018), Jambeck et al. (Science, 2015) e dados oficiais do MCTI/SIRENE."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="quiz.css" />
+  </head>
+  <body>
+    <nav id="nav">
+      <div class="wrap">
+        <div class="navgroup">
+          <a class="brand" href="index.html">Natureza</a>
+          <a class="pill keep" href="index.html">Início</a>
+        </div>
+        <div class="navgroup">
+          <a class="pill" href="index.html#ongs">ONGs</a>
+          <a class="pill fill keep" href="quiz.html">Diagnóstico</a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="qz-hero wrap" id="qz-intro">
+      <p class="meta" style="text-transform: uppercase; letter-spacing: 0.14em">
+        Instrumento científico · Não é um teste de personalidade
+      </p>
+      <h1 class="qz-h1">
+        Quanto do colapso<br class="brk" />
+        climático e oceânico<br class="brk" />
+        é <span class="it">seu</span>?
+      </h1>
+      <p class="qz-lead">
+        Isto não calcula "vibes ambientais". Cada resposta é convertida em
+        <strong>kg de CO₂e reais</strong>, usando os mesmos fatores de emissão
+        usados por governos e cientistas — o inventário oficial de emissões do
+        setor elétrico brasileiro (MCTI/SIRENE), o levantamento global de dietas
+        de Scarborough et al. (Oxford, 2014), a metanálise de Poore &amp;
+        Nemecek (Science, 2018), os fatores de transporte do DEFRA/BEIS e os
+        estudos de referência sobre plástico oceânico (Jambeck et al., Science,
+        2015) e pesca (FAO SOFIA). No final você recebe um número, não uma
+        sensação — e uma lista do que realmente muda esse número, em kg poupados
+        por ano, não em conselhos genéricos.
+      </p>
+
+      <div class="qz-modes">
+        <button class="qz-mode-card" data-mode="rapido">
+          <span class="qz-mode-tag">~4 min · 12 perguntas</span>
+          <h3>Rápido</h3>
+          <p>
+            Uma estimativa de faixa da sua pegada de carbono anual e do seu
+            impacto oceânico, com base nos maiores vetores de emissão
+            (transporte, dieta, energia, consumo).
+          </p>
+          <span class="qz-mode-cta">Começar versão rápida →</span>
+        </button>
+        <button class="qz-mode-card qz-mode-card--full" data-mode="completo">
+          <span class="qz-mode-tag">~14 min · 27 perguntas</span>
+          <h3>Completo</h3>
+          <p>
+            Cálculo detalhado por categoria (transporte, energia residencial,
+            dieta, consumo, resíduos e oceano), com dados numéricos reais — km
+            rodados, kWh, voos, refeições — e um relatório com fontes,
+            comparações e crítica específica ao seu perfil.
+          </p>
+          <span class="qz-mode-cta">Começar diagnóstico completo →</span>
+        </button>
+      </div>
+      <p class="qz-disclaimer">
+        Os cálculos usam fatores de emissão médios e publicados — não são
+        medições de laboratório do seu consumo individual. Cada número no
+        relatório final tem sua fonte citada.
+      </p>
+    </section>
+
+    <section class="qz-hero wrap qz-hidden" id="qz-quiz">
+      <div class="qz-progress-track">
+        <div class="qz-progress-fill" id="qz-progress-fill"></div>
+      </div>
+      <p class="meta" id="qz-section-label">Seção 1 · Transporte</p>
+      <p class="qz-counter" id="qz-counter">Pergunta 1 / 12</p>
+      <h2 class="qz-question" id="qz-question-text">Carregando...</h2>
+      <p class="qz-question-help" id="qz-question-help"></p>
+      <div id="qz-options"></div>
+      <div class="qz-nav-row">
+        <button class="pill" id="qz-back">← Voltar</button>
+        <button class="pill fill" id="qz-next" disabled>Próxima →</button>
+      </div>
+    </section>
+
+    <section class="wrap qz-hidden" id="qz-results">
+      <div class="qz-result-head">
+        <p
+          class="meta"
+          style="text-transform: uppercase; letter-spacing: 0.14em"
+        >
+          Relatório de impacto individual
+        </p>
+        <h2
+          class="qz-h1"
+          style="font-size: clamp(1.8rem, 6vw, 3.4rem)"
+          id="qz-headline"
+        >
+          —
+        </h2>
+        <p class="qz-lead" id="qz-headline-sub"></p>
+      </div>
+
+      <div class="qz-compare" id="qz-compare"></div>
+
+      <div class="qz-block">
+        <h3 class="qz-block-title">De onde vem a sua pegada</h3>
+        <p class="meta">
+          Decomposição por categoria, em toneladas de CO₂e por ano (tCO₂e/ano)
+        </p>
+        <div id="qz-breakdown" class="qz-breakdown"></div>
+      </div>
+
+      <div class="qz-block" id="qz-ocean-block">
+        <h3 class="qz-block-title">Seu índice de impacto oceânico</h3>
+        <p class="meta">
+          Não é carbono — mede contato direto com plástico, pesca e químicos que
+          chegam ao mar (ODS 14)
+        </p>
+        <div class="qz-gauge-wrap">
+          <div class="qz-gauge-track">
+            <div class="qz-gauge-fill" id="qz-ocean-fill"></div>
+          </div>
+          <div class="qz-gauge-labels">
+            <span>Alto impacto</span><span>Baixo impacto</span>
+          </div>
+        </div>
+        <p id="qz-ocean-text"></p>
+      </div>
+
+      <div class="qz-block">
+        <h3 class="qz-block-title">Diagnóstico crítico</h3>
+        <div id="qz-critique" class="qz-critique"></div>
+      </div>
+
+      <div class="qz-block">
+        <h3 class="qz-block-title">O que realmente muda esse número</h3>
+        <p class="meta">
+          Ordenado pelo maior potencial real de redução, em kg de CO₂e evitados
+          por ano
+        </p>
+        <ol class="qz-actions" id="qz-actions"></ol>
+      </div>
+
+      <div class="qz-block">
+        <details class="qz-sources">
+          <summary>Metodologia e fontes usadas neste cálculo</summary>
+          <div id="qz-sources-body"></div>
+        </details>
+      </div>
+
+      <div class="qz-nav-row">
+        <button class="pill" id="qz-restart">Refazer diagnóstico</button>
+        <a class="pill fill" href="index.html#ongs"
+          >Ver o que fazer com isso →</a
+        >
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <p>
+          Diagnóstico baseado em literatura científica pública (IPCC, FAO, Poore
+          &amp; Nemecek 2018, Scarborough et al. 2014, Jambeck et al. 2015,
+          MCTI/SIRENE, DEFRA/BEIS). Estimativas educativas, não um inventário
+          certificado de emissões.
+        </p>
+        <p class="fmark">
+          <span class="titulo">ODS 13 &amp; 14</span> — Ação Climática e Vida na
+          Água
+        </p>
+      </div>
+    </footer>
+
+    <script src="quiz.js"></script>
+  </body>
+</html>
